@@ -2,8 +2,8 @@ from time import sleep  # Gets 'Sleep' and sets timer.
 from selenium import webdriver  # Gets the webdriver.
 from selenium.webdriver.common.by import By  # Set of supported locator strategies.
 from selenium.webdriver.common.keys import Keys  # Gets the 'Keys' to send to the element.
-from selenium.webdriver.support import expected_conditions as EC  # Canned 'Expected Conditions' which are generally useful within webdriver.
 from selenium.webdriver.support.ui import WebDriverWait  # Gets 'WebDriverWait' for better use then time.sleep().
+from selenium.webdriver.support import expected_conditions as EC  # Canned 'Expected Conditions' which are generally useful within webdriver.
 
 PATH = 'C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe'  # Gets the path to the chrome driver.
 driver = webdriver.Chrome(PATH)  # Sets the variable and chrome as the browser.
