@@ -56,13 +56,13 @@ finally:  # Waits for 2.5 seconds and then clicks the 'Open Microsoft Teams' but
     pyautogui.click(1036, 225)
 
 # Sets timer till 3 seconds
-sleep(5)
+sleep(3)
 
 # Quits the browser
 driver.quit()
 
 # Turning off the mic
-sleep(4)
+sleep(2)
 pyautogui.click(1061, 456)
 
 # Joining the class
