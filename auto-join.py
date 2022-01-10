@@ -1,3 +1,4 @@
+import pyautogui  # Gets 'pyautogui' for automating the click and keys.
 from time import sleep  # Gets 'Sleep' and sets timer.
 from selenium import webdriver  # Gets the webdriver.
 from selenium.webdriver.common.by import By  # Set of supported locator strategies.
@@ -31,20 +32,39 @@ finally:  # After checking the presence of the element then it sends Keys to the
 
 # Avinash profile avatar
 try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/header/nav/div/div[1]/ul/li[2]/a')))
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/header/nav/div/div[1]/ul/li[2]/a')))
 finally:  # After checking the presence of the element then it clicks to the intractable element.
     driver.find_element(By.XPATH, '//*[@id="app"]/header/nav/div/div[1]/ul/li[2]/a').click()
 
 # My Schedule
 try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button')))
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button')))
 finally:  # After checking the presence of the element then it clicks to the intractable element.
     driver.find_element(By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button').click()
 
-# Set timer till 3 seconds
+# Assembly
+try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="table-scroll"]/table/tbody/tr[1]/td[4]/button')))
+finally:  # After checking the presence of the element then it clicks to the intractable element.
+    driver.find_element(By.XPATH, '//*[@id="table-scroll"]/table/tbody/tr[1]/td[4]/button').click()
+
+# Allowing chrome to open teams
+try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/script[3]')))
+finally:  # Waits for 2.5 seconds and then clicks the 'Open Microsoft Teams' button.
+    sleep(2.5)
+    pyautogui.click(1036, 225)
+
+# Sets timer till 3 seconds
 sleep(5)
 
 # Quits the browser
 driver.quit()
+
+# Turning off the mic
+sleep(4)
+pyautogui.click(1061, 456)
+
+# Joining the class
+sleep(2)
+pyautogui.click(1323, 645)
