@@ -44,7 +44,7 @@ class periods:
     def third_period():
         try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
             WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, buttons.button_two)))
+                EC.presence_of_element_located((By.XPATH, buttons.button_three)))
         finally:  # After checking the presence of the element then it clicks to the intractable element.
             driver.find_element(By.XPATH, buttons.button_three).click()
 
