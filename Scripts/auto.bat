@@ -1,1 +1,1 @@
-D:\Coding\Python\Auto-Teams-Join\venv\Scripts\python.exe "D:\Coding\Python\Auto-Teams-Join\auto-join.py" pause
+D:\Coding\Python\Auto-Teams-Join\venv\Scripts\python.exe "D:\Coding\Python\Auto-Teams-Join\Scripts\auto-join.py" pause

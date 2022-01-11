@@ -129,7 +129,7 @@ sleep(1)
 driver.quit()
 
 # Turning off the mic
-sleep(2)
+sleep(3)
 
 posXY = pyautogui.position(1059, 452)
 pos_color = (158, 162, 255)
@@ -139,10 +139,9 @@ if test == pos_color:
     pyautogui.click(1061, 456)
 
 else:
-    print(test)
     pyautogui.click(1323, 645)
 
-sleep(1)
+sleep(2)
 pyautogui.click(1323, 645)
 
 sleep(2)
