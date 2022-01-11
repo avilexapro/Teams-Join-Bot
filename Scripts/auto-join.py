@@ -46,7 +46,7 @@ class periods:
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, buttons.button_two)))
         finally:  # After checking the presence of the element then it clicks to the intractable element.
-            driver.find_element(By.XPATH, buttons.button_two).click()
+            driver.find_element(By.XPATH, buttons.button_three).click()
 
     @staticmethod
     def forth_period():
