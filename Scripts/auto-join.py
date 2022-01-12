@@ -7,6 +7,10 @@ from selenium.webdriver.common.keys import Keys  # Gets the 'Keys' to send to th
 from selenium.webdriver.support.ui import WebDriverWait  # Gets 'WebDriverWait' for better use then time.sleep().
 from selenium.webdriver.support import expected_conditions as EC  # Canned 'Expected Conditions' which are generally.
 
+choose = int(input('You want auto press 1 or manual press 2: '))
+if choose == 2:
+    class_select = int(input('What class do you want: '))
+
 PATH = 'C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe'  # Gets the path to the chrome driver.
 driver = webdriver.Chrome(PATH)  # Sets the variable and chrome as the browser.
 hour = datetime.datetime.now().hour
@@ -14,55 +18,51 @@ hour = datetime.datetime.now().hour
 driver.get('https://kyc.edmatix.com/login')  # Gets the website.
 driver.maximize_window()  # maximizes the window of the browser
 
-
-class buttons:
-    button_one = '//*[@id="table-scroll"]/table/tbody/tr[2]/td[4]/button'
-    button_two = '//*[@id="table-scroll"]/table/tbody/tr[4]/td[4]/button'
-    button_three = '//*[@id="table-scroll"]/table/tbody/tr[3]/td[4]/button'
-    button_four = '//*[@id="table-scroll"]/table/tbody/tr[5]/td[4]/button'
-    button_five = '//*[@id="table-scroll"]/table/tbody/tr[6]/td[4]/button'
+button_one = '//*[@id="table-scroll"]/table/tbody/tr[2]/td[4]/button'
+button_two = '//*[@id="table-scroll"]/table/tbody/tr[4]/td[4]/button'
+button_three = '//*[@id="table-scroll"]/table/tbody/tr[3]/td[4]/button'
+button_four = '//*[@id="table-scroll"]/table/tbody/tr[5]/td[4]/button'
+button_five = '//*[@id="table-scroll"]/table/tbody/tr[6]/td[4]/button'
 
 
-class periods:
-    @staticmethod
-    def first_button():
-        try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, buttons.button_one)))
-        finally:  # After checking the presence of the element then it clicks to the intractable element.
-            driver.find_element(By.XPATH, buttons.button_one).click()
+def first_button():
+    try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, button_one)))
+    finally:  # After checking the presence of the element then it clicks to the intractable element.
+        driver.find_element(By.XPATH, button_one).click()
 
-    @staticmethod
-    def second_period():
-        try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, buttons.button_two)))
-        finally:  # After checking the presence of the element then it clicks to the intractable element.
-            driver.find_element(By.XPATH, buttons.button_two).click()
 
-    @staticmethod
-    def third_period():
-        try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, buttons.button_three)))
-        finally:  # After checking the presence of the element then it clicks to the intractable element.
-            driver.find_element(By.XPATH, buttons.button_three).click()
+def second_period():
+    try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, button_two)))
+    finally:  # After checking the presence of the element then it clicks to the intractable element.
+        driver.find_element(By.XPATH, button_two).click()
 
-    @staticmethod
-    def forth_period():
-        try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, buttons.button_four)))
-        finally:  # After checking the presence of the element then it clicks to the intractable element.
-            driver.find_element(By.XPATH, buttons.button_four).click()
 
-    @staticmethod
-    def fifth_period():
-        try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, buttons.button_five)))
-        finally:  # After checking the presence of the element then it clicks to the intractable element.
-            driver.find_element(By.XPATH, buttons.button_five).click()
+def third_period():
+    try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, button_three)))
+    finally:  # After checking the presence of the element then it clicks to the intractable element.
+        driver.find_element(By.XPATH, button_three).click()
+
+
+def forth_period():
+    try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, button_four)))
+    finally:  # After checking the presence of the element then it clicks to the intractable element.
+        driver.find_element(By.XPATH, button_four).click()
+
+
+def fifth_period():
+    try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, button_five)))
+    finally:  # After checking the presence of the element then it clicks to the intractable element.
+        driver.find_element(By.XPATH, button_five).click()
 
 
 # School Code
@@ -97,23 +97,44 @@ try:  # This waits and checks for 10 seconds for the presence for the element it
 finally:  # After checking the presence of the element then it clicks to the intractable element.
     driver.find_element(By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button').click()
 
-if hour == 18:
-    periods.first_button()
+if choose == 1:
+    if hour == 18:
+        first_button()
 
-elif hour == 19:
-    periods.second_period()
+    elif hour == 19:
+        second_period()
 
-elif hour == 20:
-    periods.third_period()
+    elif hour == 20:
+        third_period()
 
-elif hour == 21:
-    periods.forth_period()
+    elif hour == 21:
+        forth_period()
 
-elif hour == 22:
-    periods.fifth_period()
+    elif hour == 22:
+        fifth_period()
 
-else:
-    exit()
+    else:
+        exit()
+
+if choose == 2:
+    # noinspection PyUnboundLocalVariable
+    if class_select == 1:
+        first_button()
+
+    elif class_select == 2:
+        second_period()
+
+    elif class_select == 3:
+        third_period()
+
+    elif class_select == 4:
+        forth_period()
+
+    elif class_select == 5:
+        fifth_period()
+
+    else:
+        exit()
 
 # Allowing chrome to open teams
 try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
@@ -143,6 +164,3 @@ else:
 
 sleep(2)
 pyautogui.click(1323, 645)
-
-sleep(2)
-exit()
