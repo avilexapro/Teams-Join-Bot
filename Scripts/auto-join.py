@@ -146,6 +146,9 @@ if choose == 2:
     elif class_select == 5:
         fifth_period()
 
+    elif class_select == 6:
+        sixth_period()
+
     else:
         driver.quit()
         exit()
@@ -178,3 +181,6 @@ else:
 
 sleep(2)
 pyautogui.click(1323, 645)
+
+sleep(2)
+exit()
