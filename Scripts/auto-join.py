@@ -1,3 +1,4 @@
+import os  # Gets 'os' for getting the env variable.
 import datetime  # Gets 'datetime' for getting time.
 import pyautogui  # Gets 'pyautogui' for automating the click and keys.
 from time import sleep  # Gets 'Sleep' and sets timer.
@@ -11,21 +12,21 @@ choose = int(input('You want auto press 1 or manual press 2: '))  # Asks the use
 if choose == 2:
     class_select = int(input('What class do you want: '))  # If choose manual then it will ask which class to join.
 
-PATH = 'C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe'  # Gets the path to the chrome driver.
-driver = webdriver.Chrome(PATH)  # Sets the variable and chrome as the browser.
-time = (datetime.datetime.now().hour, datetime.datetime.now().minute)
+driver = webdriver.Chrome(os.getenv('ChromePath'))  # Gets the variable from the env and for chrome driver.
+time = (datetime.datetime.now().hour, datetime.datetime.now().minute)  # Gets hour and minute and sets it in a variable.
 
 driver.get('https://kyc.edmatix.com/login')  # Gets the website.
-driver.maximize_window()  # maximizes the window of the browser
+driver.maximize_window()  # Maximizes the window of the browser
 
-button_one = '//*[@id="table-scroll"]/table/tbody/tr[1]/td[4]/button'
-button_two = '//*[@id="table-scroll"]/table/tbody/tr[3]/td[4]/button'
-button_three = '//*[@id="table-scroll"]/table/tbody/tr[2]/td[4]/button'
-button_four = '//*[@id="table-scroll"]/table/tbody/tr[4]/td[4]/button'
-button_five = '//*[@id="table-scroll"]/table/tbody/tr[5]/td[4]/button'
-button_six = '//*[@id="table-scroll"]/table/tbody/tr[6]/td[4]/button'
+button_one = '//*[@id="table-scroll"]/table/tbody/tr[1]/td[4]/button'  # XPath of first class in edmatix schedule.
+button_two = '//*[@id="table-scroll"]/table/tbody/tr[3]/td[4]/button'  # XPath of second class in edmatix schedule.
+button_three = '//*[@id="table-scroll"]/table/tbody/tr[2]/td[4]/button'  # XPath of third class in edmatix schedule.
+button_four = '//*[@id="table-scroll"]/table/tbody/tr[4]/td[4]/button'  # XPath of forth class in edmatix schedule.
+button_five = '//*[@id="table-scroll"]/table/tbody/tr[5]/td[4]/button'  # XPath of fifth class in edmatix schedule.
+button_six = '//*[@id="table-scroll"]/table/tbody/tr[6]/td[4]/button'  # XPath of sixth class in edmatix schedule.
 
 
+# The functions if for joining the first class.
 def first_button():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
         WebDriverWait(driver, 10).until(
@@ -34,6 +35,7 @@ def first_button():
         driver.find_element(By.XPATH, button_one).click()
 
 
+# The functions if for joining the second class.
 def second_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
         WebDriverWait(driver, 10).until(
@@ -42,6 +44,7 @@ def second_period():
         driver.find_element(By.XPATH, button_two).click()
 
 
+# The functions if for joining the third class.
 def third_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
         WebDriverWait(driver, 10).until(
@@ -50,6 +53,7 @@ def third_period():
         driver.find_element(By.XPATH, button_three).click()
 
 
+# The functions if for joining the forth class.
 def forth_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
         WebDriverWait(driver, 10).until(
@@ -58,6 +62,7 @@ def forth_period():
         driver.find_element(By.XPATH, button_four).click()
 
 
+# The functions if for joining the fifth class.
 def fifth_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
         WebDriverWait(driver, 10).until(
@@ -66,6 +71,7 @@ def fifth_period():
         driver.find_element(By.XPATH, button_five).click()
 
 
+# The functions if for joining the sixth class.
 def sixth_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
         WebDriverWait(driver, 10).until(
@@ -106,52 +112,54 @@ try:  # This waits and checks for 10 seconds for the presence for the element it
 finally:  # After checking the presence of the element then it clicks to the intractable element.
     driver.find_element(By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button').click()
 
-if choose == 1:
-    if time <= (8, 40) or time <= (8, 55):
+if choose == 1:  # This is activated when user chased auto method to sign in.
+    if time <= (8, 40) or time <= (8, 55):  # This checks the time and then join the call.
         first_button()
 
-    elif time <= (9, 00) or time <= (9, 50):
+    elif time <= (9, 00) or time <= (9, 50):  # This checks the time and then join the call.
         second_period()
 
-    elif time <= (10, 00) or time <= (10, 50):
+    elif time <= (10, 00) or time <= (10, 50):  # This checks the time and then join the call.
         third_period()
 
-    elif time <= (11, 00) or time <= (11, 50):
+    elif time <= (11, 00) or time <= (11, 50):  # This checks the time and then join the call.
         forth_period()
 
-    elif time <= (12, 00) or time <= (12, 50):
+    elif time <= (12, 00) or time <= (12, 50):  # This checks the time and then join the call.
         fifth_period()
 
-    elif time <= (14, 00) or time <= (15, 00):
+    elif time <= (14, 00) or time <= (15, 00):  # This checks the time and then join the call.
         sixth_period()
 
     else:
-        driver.quit()
-        exit()
+        print('No class found at this moment')  # Prints 'There is no class today' if no class in the time is found.
+        driver.quit()  # If not found it quits the browser.
+        exit()  # Then exits the code.
 
-if choose == 2:
+if choose == 2:  # This is activated when user chased manual method to sign in.
     # noinspection PyUnboundLocalVariable
-    if class_select == 1:
+    if class_select == 1:  # This checks the time and then join the call.
         first_button()
 
-    elif class_select == 2:
+    elif class_select == 2:  # This checks the time and then join the call.
         second_period()
 
-    elif class_select == 3:
+    elif class_select == 3:  # This checks the time and then join the call.
         third_period()
 
-    elif class_select == 4:
+    elif class_select == 4:  # This checks the time and then join the call.
         forth_period()
 
-    elif class_select == 5:
+    elif class_select == 5:  # This checks the time and then join the call.
         fifth_period()
 
-    elif class_select == 6:
+    elif class_select == 6:  # This checks the time and then join the call.
         sixth_period()
 
     else:
-        driver.quit()
-        exit()
+        print(f'No class found by this number {class_select}')  # That there is no class of this number given by the user.
+        driver.quit()  # If not found it quits the browser.
+        exit()  # Then exits the code.
 
 # Allowing chrome to open teams
 try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
@@ -167,20 +175,13 @@ sleep(1)
 driver.quit()
 
 # Turning off the mic
-sleep(5)
+sleep(7)
 
-posXY = pyautogui.position(1059, 452)
-pos_color = (158, 162, 255)
-test = pyautogui.pixel(posXY[0], posXY[1])
-
-if test == pos_color:
-    pyautogui.click(1061, 456)
-
-else:
-    pyautogui.click(1323, 645)
+if pyautogui.pixel(1059, 452) == (158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
+    pyautogui.click(1061, 456)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
 sleep(2)
-pyautogui.click(1323, 645)
+pyautogui.click(1323, 645)  # Clicks the join button.
 
 sleep(2)
-exit()
+exit()  # Exits the code running.
