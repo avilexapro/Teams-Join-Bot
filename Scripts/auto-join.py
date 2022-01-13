@@ -1,4 +1,4 @@
-import datetime
+import datetime  # Gets 'datetime' for getting time.
 import pyautogui  # Gets 'pyautogui' for automating the click and keys.
 from time import sleep  # Gets 'Sleep' and sets timer.
 from selenium import webdriver  # Gets the webdriver.
@@ -7,22 +7,23 @@ from selenium.webdriver.common.keys import Keys  # Gets the 'Keys' to send to th
 from selenium.webdriver.support.ui import WebDriverWait  # Gets 'WebDriverWait' for better use then time.sleep().
 from selenium.webdriver.support import expected_conditions as EC  # Canned 'Expected Conditions' which are generally.
 
-choose = int(input('You want auto press 1 or manual press 2: '))
+choose = int(input('You want auto press 1 or manual press 2: '))  # Asks the user for automatic login or manual.
 if choose == 2:
-    class_select = int(input('What class do you want: '))
+    class_select = int(input('What class do you want: '))  # If choose manual then it will ask which class to join.
 
 PATH = 'C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe'  # Gets the path to the chrome driver.
 driver = webdriver.Chrome(PATH)  # Sets the variable and chrome as the browser.
-hour = datetime.datetime.now().hour
+time = (datetime.datetime.now().hour, datetime.datetime.now().minute)
 
 driver.get('https://kyc.edmatix.com/login')  # Gets the website.
 driver.maximize_window()  # maximizes the window of the browser
 
-button_one = '//*[@id="table-scroll"]/table/tbody/tr[2]/td[4]/button'
-button_two = '//*[@id="table-scroll"]/table/tbody/tr[4]/td[4]/button'
-button_three = '//*[@id="table-scroll"]/table/tbody/tr[3]/td[4]/button'
-button_four = '//*[@id="table-scroll"]/table/tbody/tr[5]/td[4]/button'
-button_five = '//*[@id="table-scroll"]/table/tbody/tr[6]/td[4]/button'
+button_one = '//*[@id="table-scroll"]/table/tbody/tr[1]/td[4]/button'
+button_two = '//*[@id="table-scroll"]/table/tbody/tr[3]/td[4]/button'
+button_three = '//*[@id="table-scroll"]/table/tbody/tr[2]/td[4]/button'
+button_four = '//*[@id="table-scroll"]/table/tbody/tr[4]/td[4]/button'
+button_five = '//*[@id="table-scroll"]/table/tbody/tr[5]/td[4]/button'
+button_six = '//*[@id="table-scroll"]/table/tbody/tr[6]/td[4]/button'
 
 
 def first_button():
@@ -65,6 +66,14 @@ def fifth_period():
         driver.find_element(By.XPATH, button_five).click()
 
 
+def sixth_period():
+    try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, button_six)))
+    finally:  # After checking the presence of the element then it clicks to the intractable element.
+        driver.find_element(By.XPATH, button_six).click()
+
+
 # School Code
 try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'orgcode')))
@@ -98,22 +107,26 @@ finally:  # After checking the presence of the element then it clicks to the int
     driver.find_element(By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button').click()
 
 if choose == 1:
-    if hour == 18:
+    if time <= (8, 40) or time <= (8, 55):
         first_button()
 
-    elif hour == 19:
+    elif time <= (9, 00) or time <= (9, 50):
         second_period()
 
-    elif hour == 20:
+    elif time <= (10, 00) or time <= (10, 50):
         third_period()
 
-    elif hour == 21:
+    elif time <= (11, 00) or time <= (11, 50):
         forth_period()
 
-    elif hour == 22:
+    elif time <= (12, 00) or time <= (12, 50):
         fifth_period()
 
+    elif time <= (14, 00) or time <= (15, 00):
+        sixth_period()
+
     else:
+        driver.quit()
         exit()
 
 if choose == 2:
@@ -134,6 +147,7 @@ if choose == 2:
         fifth_period()
 
     else:
+        driver.quit()
         exit()
 
 # Allowing chrome to open teams
@@ -143,14 +157,14 @@ finally:  # Waits for 2.5 seconds and then clicks the 'Open Microsoft Teams' but
     sleep(2.5)
     pyautogui.click(1036, 225)
 
-# Sets timer till 3 seconds
+# Sets timer till 1 seconds
 sleep(1)
 
 # Quits the browser
 driver.quit()
 
 # Turning off the mic
-sleep(3)
+sleep(5)
 
 posXY = pyautogui.position(1059, 452)
 pos_color = (158, 162, 255)
