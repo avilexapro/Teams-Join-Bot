@@ -1,4 +1,3 @@
-import os  # Gets 'os' for getting the env variable.
 import datetime  # Gets 'datetime' for getting time.
 import pyautogui  # Gets 'pyautogui' for automating the click and keys.
 from time import sleep  # Gets 'Sleep' and sets timer.
@@ -12,7 +11,7 @@ choose = int(input('You want auto press 1 or manual press 2: '))  # Asks the use
 if choose == 2:
     class_select = int(input('What class do you want: '))  # If choose manual then it will ask which class to join.
 
-driver = webdriver.Chrome(os.getenv('ChromePath'))  # Gets the variable from the env and for chrome driver.
+driver = webdriver.Chrome('C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe')  # Gets the variable from the env and for chrome driver.
 time = (datetime.datetime.now().hour, datetime.datetime.now().minute)  # Gets hour and minute and sets it in a variable.
 
 driver.get('https://kyc.edmatix.com/login')  # Gets the website.
