@@ -11,7 +11,8 @@ choose = int(input('You want auto press 1 or manual press 2: '))  # Asks the use
 if choose == 2:
     class_select = int(input('What class do you want: '))  # If choose manual then it will ask which class to join.
 
-driver = webdriver.Chrome('C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe')  # Gets the variable from the env and for chrome driver.
+driver = webdriver.Chrome(
+    'C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe')  # Gets the variable from the env and for chrome driver.
 time = (datetime.datetime.now().hour, datetime.datetime.now().minute)  # Gets hour and minute and sets it in a variable.
 
 driver.get('https://kyc.edmatix.com/login')  # Gets the website.
@@ -156,7 +157,8 @@ if choose == 2:  # This is activated when user chased manual method to sign in.
         sixth_period()
 
     else:
-        print(f'No class found by this number {class_select}')  # That there is no class of this number given by the user.
+        print(
+            f'No class found by this number {class_select}')  # That there is no class of this number given by the user.
         driver.quit()  # If not found it quits the browser.
         exit()  # Then exits the code.
 
@@ -176,7 +178,8 @@ driver.quit()
 # Turning off the mic
 sleep(7)
 
-if pyautogui.pixel(1059, 452) == (158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
+if pyautogui.pixel(1059, 452) == (
+        158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
     pyautogui.click(1061, 456)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
 sleep(2)
