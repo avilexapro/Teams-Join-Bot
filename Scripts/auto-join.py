@@ -167,7 +167,7 @@ try:  # This waits and checks for 10 seconds for the presence for the element it
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/script[3]')))
 finally:  # Waits for 2.5 seconds and then clicks the 'Open Microsoft Teams' button.
     sleep(2.5)
-    pyautogui.click(1036, 225)
+    pyautogui.leftClick(1036, 225)
 
 # Sets timer till 1 seconds
 sleep(1)
@@ -180,10 +180,22 @@ sleep(7)
 
 if pyautogui.pixel(1059, 452) == (
         158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
-    pyautogui.click(1061, 456)  # if true it clicks the mic button otherwise it directly clicks the join button.
+    pyautogui.leftClick(1061, 456)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
 sleep(2)
-pyautogui.click(1323, 645)  # Clicks the join button.
+pyautogui.leftClick(1323, 645)  # Clicks the join button.
 
 sleep(2)
-exit()  # Exits the code running.
+pyautogui.leftClick(1903, 22)  # Closes the teams window.
+
+sleep(1)
+pyautogui.leftClick(1569, 33)  # Maximizes the meeting window.
+
+sleep(2)
+pyautogui.rightClick(1094, 1057)  # Right clicks the powershell icon for more options.
+
+sleep(1)
+pyautogui.leftClick(1051, 996)  # Then clicks close all window in the options
+
+pyautogui.position(0, 0)  # Sets the position of the mouse to 0.
+exit()  # Exits the code.
