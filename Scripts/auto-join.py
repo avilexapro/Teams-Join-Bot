@@ -8,8 +8,15 @@ from selenium.webdriver.support.ui import WebDriverWait  # Gets 'WebDriverWait' 
 from selenium.webdriver.support import expected_conditions as EC  # Canned 'Expected Conditions' which are generally.
 
 choose = int(input('You want auto press 1 or manual press 2: '))  # Asks the user for automatic login or manual.
-if choose == 2:
+if choose == 1:
+    print('There is no option like that.')
+
+elif choose == 2:
     class_select = int(input('What class do you want: '))  # If choose manual then it will ask which class to join.
+
+else:
+    print('Invalid option!')
+    exit()
 
 driver = webdriver.Chrome(
     'C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe')  # Gets the variable from the env and for chrome driver.
@@ -176,9 +183,8 @@ sleep(1)
 driver.quit()
 
 # Turning off the mic
-sleep(7)
+sleep(10)
 
-sleep(5)
 if pyautogui.pixel(605, 590) == (
         158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
     pyautogui.leftClick(605, 590)  # if true it clicks the mic button otherwise it directly clicks the join button.
@@ -187,11 +193,16 @@ if pyautogui.pixel(1059, 452) == (
         158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
     pyautogui.leftClick(1061, 456)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
-sleep(2)
-pyautogui.leftClick(1323, 645)  # Clicks the join button.
+if pyautogui.pixel(1317, 643) == (
+        255, 245, 232):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
+    pyautogui.leftClick(1317, 643)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
-sleep(2)
-pyautogui.leftClick(1903, 22)  # Closes the teams window.
+else:
+    exit()
 
-sleep(1)
-pyautogui.leftClick(1569, 33)  # Maximizes the meeting window.
+sleep(4)
+if pyautogui.pixel(1565, 36) == (66, 66, 66):
+    pyautogui.leftClick(1565, 36)
+
+else:
+    print('You joined the class.')
