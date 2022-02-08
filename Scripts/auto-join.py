@@ -18,8 +18,7 @@ else:
     print('Invalid option!')
     exit()
 
-driver = webdriver.Chrome(
-    'C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe')  # Gets the variable from the env and for chrome driver.
+driver = webdriver.Chrome('C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\chromedriver.exe')  # Gets the variable from the env and for chrome driver.
 time = (datetime.datetime.now().hour, datetime.datetime.now().minute)  # Gets hour and minute and sets it in a variable.
 
 driver.get('https://kyc.edmatix.com/login')  # Gets the website.
@@ -36,8 +35,7 @@ button_six = '//*[@id="table-scroll"]/table/tbody/tr[6]/td[4]/button'  # XPath o
 # The functions if for joining the first class.
 def first_button():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, button_one)))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, button_one)))
     finally:  # After checking the presence of the element then it clicks to the intractable element.
         driver.find_element(By.XPATH, button_one).click()
 
@@ -45,8 +43,7 @@ def first_button():
 # The functions if for joining the second class.
 def second_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, button_two)))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, button_two)))
     finally:  # After checking the presence of the element then it clicks to the intractable element.
         driver.find_element(By.XPATH, button_two).click()
 
@@ -54,8 +51,7 @@ def second_period():
 # The functions if for joining the third class.
 def third_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, button_three)))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, button_three)))
     finally:  # After checking the presence of the element then it clicks to the intractable element.
         driver.find_element(By.XPATH, button_three).click()
 
@@ -63,8 +59,7 @@ def third_period():
 # The functions if for joining the forth class.
 def forth_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, button_four)))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, button_four)))
     finally:  # After checking the presence of the element then it clicks to the intractable element.
         driver.find_element(By.XPATH, button_four).click()
 
@@ -72,8 +67,7 @@ def forth_period():
 # The functions if for joining the fifth class.
 def fifth_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, button_five)))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, button_five)))
     finally:  # After checking the presence of the element then it clicks to the intractable element.
         driver.find_element(By.XPATH, button_five).click()
 
@@ -81,8 +75,7 @@ def fifth_period():
 # The functions if for joining the sixth class.
 def sixth_period():
     try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, button_six)))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, button_six)))
     finally:  # After checking the presence of the element then it clicks to the intractable element.
         driver.find_element(By.XPATH, button_six).click()
 
@@ -107,8 +100,7 @@ finally:  # After checking the presence of the element then it sends Keys to the
 
 # Avinash profile avatar
 try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/header/nav/div/div[1]/ul/li[2]/a')))
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/header/nav/div/div[1]/ul/li[2]/a')))
 finally:  # After checking the presence of the element then it clicks to the intractable element.
     driver.find_element(By.XPATH, '//*[@id="app"]/header/nav/div/div[1]/ul/li[2]/a').click()
 
@@ -144,7 +136,6 @@ if choose == 1:  # This is activated when user chased auto method to sign in.
         exit()  # Then exits the code.
 
 if choose == 2:  # This is activated when user chased manual method to sign in.
-    # noinspection PyUnboundLocalVariable
     if class_select == 1:  # This checks the time and then join the call.
         first_button()
 
@@ -164,8 +155,7 @@ if choose == 2:  # This is activated when user chased manual method to sign in.
         sixth_period()
 
     else:
-        print(
-            f'No class found by this number {class_select}')  # That there is no class of this number given by the user.
+        print(f'No class found by this number {class_select}')  # That there is no class of this number given by the user.
         driver.quit()  # If not found it quits the browser.
         exit()  # Then exits the code.
 
@@ -185,16 +175,13 @@ driver.quit()
 # Turning off the mic
 sleep(10)
 
-if pyautogui.pixel(605, 590) == (
-        158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
+if pyautogui.pixel(605, 590) == (158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
     pyautogui.leftClick(605, 590)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
-if pyautogui.pixel(1059, 452) == (
-        158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
+if pyautogui.pixel(1059, 452) == (158, 162, 255):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
     pyautogui.leftClick(1061, 456)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
-if pyautogui.pixel(1317, 643) == (
-        255, 245, 232):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
+if pyautogui.pixel(1317, 643) == (255, 245, 232):  # Gets the RGB color code of X = 1059, Y = 452 and checks it with the given RGB value.
     pyautogui.leftClick(1317, 643)  # if true it clicks the mic button otherwise it directly clicks the join button.
 
 else:
