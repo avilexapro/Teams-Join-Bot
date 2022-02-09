@@ -106,8 +106,7 @@ finally:  # After checking the presence of the element then it clicks to the int
 
 # My Schedule
 try:  # This waits and checks for 10 seconds for the presence for the element it is better than using Time.Sleep().
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button')))
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button')))
 finally:  # After checking the presence of the element then it clicks to the intractable element.
     driver.find_element(By.XPATH, '//*[@id="bs-example-navbar-collapse-1"]/ul[1]/li[10]/button').click()
 
