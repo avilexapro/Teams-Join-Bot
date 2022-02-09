@@ -136,6 +136,7 @@ if choose == 1:  # This is activated when user chased auto method to sign in.
         exit()  # Then exits the code.
 
 if choose == 2:  # This is activated when user chased manual method to sign in.
+    # noinspection PyUnboundLocalVariable
     if class_select == 1:  # This checks the time and then join the call.
         first_button()
 
