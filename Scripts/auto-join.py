@@ -22,7 +22,8 @@ driver = webdriver.Chrome('C:\Program Files (x86)\Chrome Drivers\97.0.4692.71\ch
 time = (datetime.datetime.now().hour, datetime.datetime.now().minute)  # Gets hour and minute and sets it in a variable.
 
 driver.get('https://kyc.edmatix.com/login')  # Gets the website.
-driver.maximize_window()  # Maximizes the window of the browser
+driver.maximize_window()  # Maximizes the window of the browser.
+
 
 button_one = '//*[@id="table-scroll"]/table/tbody/tr[1]/td[4]/button'  # XPath of first class in edmatix schedule.
 button_two = '//*[@id="table-scroll"]/table/tbody/tr[3]/td[4]/button'  # XPath of second class in edmatix schedule.
